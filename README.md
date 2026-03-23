@@ -56,7 +56,7 @@ Jika Anda ingin melakukan *cloning* atau pengembangan mandiri:
 
 Dibuat dengan ❤️ oleh **MRD Rental Team**.
 * **Website**: [mrdokey.github.io/mrdrent](https://mrdokey.github.io/mrdrent/)
-* **WhatsApp**: [Hubungi Admin](https://wa.me/6281234567890)
+* **WhatsApp**: [Hubungi Admin](https://wa.me/62895428400665)
 
 ---
 
