@@ -205,5 +205,48 @@
             if(status === "Bengkel") badgeColor = "bg-danger";
 
             container.innerHTML += `
-                <div class="col-lg
-    
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-motor h-100 p-3">
+                        <div class="img-wrapper rounded-4">
+                            <span class="badge-status ${badgeColor}">${status}</span>
+                            <img src="${m[4] || 'https://via.placeholder.com/400x250'}" alt="${m[1]} - MRD Rental">
+                        </div>
+                        <div class="card-body px-1 text-center">
+                            <small class="fw-bold text-primary text-uppercase">${m[2]}</small>
+                            <h5 class="fw-bold text-dark mb-4">${m[1]}</h5>
+                            <button onclick="openDetail('${m[2]}', '${m[1]}', '${m[0]}', '${m[3]}', '${m[4]}', '${status}')" class="btn btn-outline-dark w-100 py-2 rounded-3 fw-bold">See Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function openDetail(brand, type, plate, price, img, status) {
+        const modalContent = document.getElementById('modalContent');
+        modalContent.innerHTML = `
+            <div class="position-relative">
+                <img src="${img || 'https://via.placeholder.com/400x250'}" class="w-100" style="height:280px; object-fit:cover;">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <h3 class="fw-800 text-dark mb-1">${brand} ${type}</h3>
+                    <p class="text-muted"><i class="fas fa-id-card me-2"></i>Plate: <b>${plate}</b></p>
+                </div>
+                <div class="row mb-4 g-2">
+                    <div class="col-6"><div class="p-3 bg-light rounded-4 text-center"><small class="d-block text-muted">Rate</small><span class="fw-bold text-primary">IDR ${Number(price).toLocaleString('id-ID')}</span></div></div>
+                    <div class="col-6"><div class="p-3 bg-light rounded-4 text-center"><small class="d-block text-muted">Status</small><span class="fw-bold text-dark">${status}</span></div></div>
+                </div>
+                <div class="d-grid gap-2">
+                    <a href="cariunit.html" class="btn btn-primary py-3 fw-bold rounded-3">Check Availability</a>
+                    <a href="https://wa.me/${adminWA}?text=Hi MRD Rental, I'm interested in renting the ${brand} ${type} (${plate}). Is it available?" target="_blank" class="btn btn-outline-success py-2 fw-bold rounded-3"><i class="fab fa-whatsapp me-2"></i>Contact Admin</a>
+                </div>
+            </div>
+        `;
+        new bootstrap.Modal(document.getElementById('detailModal')).show();
+    }
+    loadCatalog();
+</script>
+</body>
+</html>
